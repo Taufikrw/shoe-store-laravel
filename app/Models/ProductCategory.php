@@ -23,6 +23,6 @@ class ProductCategory extends Model
      */
     public function products(): HasMany
     {
-        return $this->hasMany(Product::class, 'foreign_key', 'id');
+        return $this->hasMany(Product::class, 'categories_id', 'id');
     }
 }
