@@ -58,7 +58,7 @@ class ProductController extends Controller
         }
 
         if ($categories) {
-            $product->where('categories', $categories);
+            $product->where('categories_id', $categories);
         }
 
         return ResponseFormatter::success(

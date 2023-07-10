@@ -17,7 +17,7 @@ class TransactionController extends Controller
         $status = $request->input('status');
 
         if ($id) {
-            $transaction = Transaction::with(['items.product'])->find($id);
+            $transaction = Transaction::with(['items.product'])->where('user_id', auth()->user()->id)->find($id);
 
             if ($transaction) {
                 return ResponseFormatter::success(

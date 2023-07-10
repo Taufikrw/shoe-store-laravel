@@ -102,11 +102,9 @@ class UserController extends Controller
             $rules['email'] = ['required', 'string', 'email', 'max:255', 'unique:users'];
         }
 
-        $request->validate($rules);
+        $user = User::where('id', $user->id)->update($request->validate($rules));
 
-        $user->update($request->all());
-
-        return ResponseFormatter::success($user, 'Profile Updated');
+        return ResponseFormatter::success($user->get(), 'Profile Updated');
     }
 
     public function logout(Request $request) {
